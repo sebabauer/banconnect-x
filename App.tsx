@@ -1,10 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import LoginScreen from './LoginScreen';
-import AuthScreen from './AuthScreen'; // la biometrica que ya creaste
-// (HomeScreen lo crearemos en el próximo paso)
+import AuthScreen from './AuthScreen';
+import HomeScreen from './HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +13,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="AuthBiometrica" component={AuthScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

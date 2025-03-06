@@ -4,23 +4,14 @@ import * as LocalAuthentication from 'expo-local-authentication';
 
 export default function AuthScreen({ navigation }) {
   const handleAuth = async () => {
-    const hasHardware = await LocalAuthentication.hasHardwareAsync();
-    const isEnrolled = await LocalAuthentication.isEnrolledAsync();
-
-    if (!hasHardware || !isEnrolled) {
-      Alert.alert("Error", "La autenticación biométrica no está disponible.");
-      return;
-    }
-
     const result = await LocalAuthentication.authenticateAsync({
       promptMessage: 'Autentica para continuar',
     });
-
+  
     if (result.success) {
-      Alert.alert('Éxito', 'Autenticado correctamente.');
-      // navegación al Home que crearemos luego
+      navigation.navigate('Home');
     } else {
-      Alert.alert('Error', 'No autenticado.');
+      Alert.alert('Error', 'Autenticación fallida.');
     }
   };
 
